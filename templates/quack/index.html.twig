@@ -1,0 +1,16 @@
+{% block body %}
+    <div class="example-wrapper">
+        <h1>Salut les Quackers </h1>
+    </div>
+<div><p>Créer un Quack</p>
+    <a href="{{ path('quack_create')}}"><button> Créer un quack </button></a>
+</div>
+
+    <ul>
+        {% for quack in quacks %}
+            <li>{{ quack.id }} {{ quack.content }} {{ quack.createdat | date ('Y-m-d') }} </li>
+            <a href="{{ path('quack_show', {id: quack.id}) }}"><button> Voir le quack </button></a>
+            <a href="{{ path('quack_remove', {id: quack.id}) }}"><button> Supprimer </button></a>
+        {% endfor %}
+    </ul>
+{% endblock %}
