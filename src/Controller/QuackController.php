@@ -4,10 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Quack;
 use App\Repository\QuackRepository;
-use Cassandra\Date;
-use Doctrine\DBAL\Types\DateType;
 use Doctrine\ORM\EntityManagerInterface;
-use phpDocumentor\Reflection\Types\String_;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -17,7 +14,14 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class QuackController extends AbstractController
 {
-    #[Route('/quack', name: 'app_quack')]
+
+    #[Route('/', name: 'app', methods: ['GET', 'HEAD'])]
+    public function base()
+    {
+         return $this->render('base.html.twig', [''
+        ]);
+    }
+    #[Route('/quack', name: 'app_quack', methods: ['GET', 'HEAD'])]
     public function index(QuackRepository $quackRepository)
     {
         $quacks = $quackRepository -> findAll();
