@@ -21,7 +21,7 @@ class QuackController extends AbstractController
          return $this->render('base.html.twig', [''
         ]);
     }
-    #[Route('/quack', name: 'app_quack', methods: ['GET', 'HEAD'])]
+    #[Route('/quack', name: 'app_quack', methods: ['POST', 'GET', 'HEAD'])]
     public function index(QuackRepository $quackRepository)
     {
         $quacks = $quackRepository -> findAll();
